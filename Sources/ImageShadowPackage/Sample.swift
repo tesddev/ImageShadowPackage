@@ -1,5 +1,5 @@
 //
-//  TestingFile.swift
+//  Sample.swift
 //
 //
 //  Created by Tes on 04/07/2024.
@@ -7,11 +7,9 @@
 
 import Foundation
 import SwiftUI
-import ImageShadowPackage
 
 struct CharacterDetailView: View {
-    let character: CharacterDetails
-    let url = URL(string: "fb.com")
+    var urlString: String
 
     var body: some View {
         ZStack {
@@ -22,30 +20,19 @@ struct CharacterDetailView: View {
             )
             .edgesIgnoringSafeArea(.all)
             VStack {
-                if let url = URL(string: character.image ?? "url") {
+                if let url = URL(string: urlString) {
                     ShadowURLImage(url: url, shadowColor: .red, radius: 55, x: 12, y: 12)
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 300, height: 300)
-                        .cornerRadius(20)
                 }
-                Spacer()
-                    .frame(height: 150)
-                ZStack {
-                    CustomUIKitViewRepresentable()
-                        .frame(height: 150)
-                    VStack {
-                        Text("Name: \(character.name ?? "Tes")").font(.largeTitle).foregroundColor(.white)
-                        Text("Status: \(character.status ?? "Tes")").foregroundColor(.white)
-                        Text("Species: \(character.species ?? "Human")").foregroundColor(.white)
-                    }
-                }
+                ShadowImage(image: Image(systemName: "house"))
+                    .frame(width: 300, height: 300)
             }
             .padding()
         }
-        .navigationBarTitle(Text(character.name ?? ""), displayMode: .inline)
     }
 }
 
 #Preview {
-    CharacterDetailView(character: CharacterDetails.empty)
+    CharacterDetailView(urlString: "https://avatars.githubusercontent.com/u/58847828?v=4")
 }
