@@ -29,3 +29,5 @@ struct ContentView: View {
     }
 }
 ```
+
+You can refer to Sources/ImageShadowPackage/Sample for sample usage.
