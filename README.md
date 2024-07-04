@@ -17,8 +17,9 @@ struct ContentView: View {
 }
 ```
 
-```
 ### Remote Image
+
+```swift
 import SwiftUI
 import ShadowImagePackage
 
